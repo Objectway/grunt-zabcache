@@ -1,18 +1,17 @@
 {
-  "name": "grunt-appcache",
+  "name": "grunt-zabcache",
   "description": "Grunt task for generating an HTML5 AppCache manifest.",
-  "version": "0.1.8",
-  "homepage": "https://github.com/canvace/grunt-appcache/",
+  "version": "0.1.9",
+  "homepage": "https://github.com/canvace/grunt-zabcache/",
   "author": {
-    "name": "Daniele Cocca",
-    "email": "daniele.cocca@gmail.com"
+    "name": "Marco DAmelio"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/canvace/grunt-appcache.git"
+    "url": "https://github.com/canvace/grunt-zabcache.git"
   },
   "bugs": {
-    "url": "https://github.com/canvace/grunt-appcache/issues"
+    "url": "https://github.com/canvace/grunt-zabcache/issues"
   },
   "license": "MIT",
   "main": "Gruntfile.js",
@@ -32,6 +31,6 @@
     "grunt": "~0.4.1"
   },
   "keywords": [
-    "grunt", "gruntplugin", "html5", "manifest", "appcache"
+    "grunt", "gruntplugin", "html5", "manifest", "zabcache"
   ]
 }

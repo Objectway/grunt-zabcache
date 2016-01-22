@@ -1,6 +1,6 @@
-# grunt-appcache
+# grunt-zabcache
 
-> Grunt task for generating an HTML5 AppCache manifest from the specified list of files. Forked from https://github.com/canvace/grunt-appcache with headcomment support. The headcomment allow to add freetext comment in the first line of the manifest
+> Grunt task for generating an HTML5 AppCache manifest from the specified list of files. Forked from https://github.com/marcozabo/grunt-zabcache with headcomment support. The headcomment allow to add freetext comment in the first line of the manifest
 
 ## Getting Started
 This plugin requires Grunt `~0.4.1`
@@ -8,23 +8,23 @@ This plugin requires Grunt `~0.4.1`
 If you haven't used [Grunt](http://gruntjs.com/) before, be sure to check out the [Getting Started](http://gruntjs.com/getting-started) guide, as it explains how to create a [Gruntfile](http://gruntjs.com/sample-gruntfile) as well as install and use Grunt plugins. Once you're familiar with that process, you may install this plugin with this command:
 
 ```shell
-npm install grunt-appcache --save-dev
+npm install grunt-zabcache --save-dev
 ```
 
 Once the plugin has been installed, it may be enabled inside your Gruntfile with this line of JavaScript:
 
 ```js
-grunt.loadNpmTasks('grunt-appcache');
+grunt.loadNpmTasks('grunt-zabcache');
 ```
 
-## The "appcache" task
+## The "zabcache" task
 
 ### Overview
-In your project's Gruntfile, add a section named `appcache` to the data object passed into `grunt.initConfig()`.
+In your project's Gruntfile, add a section named `zabcache` to the data object passed into `grunt.initConfig()`.
 
 ```js
 grunt.initConfig({
-  appcache: {
+  zabcache: {
     options: {
       // Task-specific options go here.
     },
@@ -65,7 +65,7 @@ Specifies if to ignore the cache manifest itself from the list of files to inser
 Type: `Boolean`
 Default value: `false`
 
-Specifies whether to write the "prefer-online" entry in the "SETTINGS:" section or not. [More information](http://www.whatwg.org/specs/web-apps/current-work/multipage/browsers.html#appcache).  
+Specifies whether to write the "prefer-online" entry in the "SETTINGS:" section or not. 
 
 ### Target fields
 
@@ -96,7 +96,7 @@ In this example, the module is set to generate an AppCache manifest from the con
 
 ```js
 grunt.initConfig({
-  appcache: {
+  zabcache: {
     options: {
       basePath: 'static'
     },
@@ -115,7 +115,7 @@ The next example uses the extended syntax to the `cache` parameter and add the v
 ```js
 grunt.initConfig({
 pkg: grunt.file.readJSON('package.json'),
-  appcache: {
+  zabcache: {
     options: {
       basePath: 'static',
       headcomment: '<%= pkg.name %> version: <%= pkg.version %>'
@@ -138,7 +138,7 @@ The last example uses headcomment to add free text in the first commented line:
 ```js
 grunt.initConfig({
 pkg: grunt.file.readJSON('package.json'),
-  appcache: {
+  zabcache: {
     options: {
       basePath: 'static',
       headcomment: "MyWebApp 1.0.0"
