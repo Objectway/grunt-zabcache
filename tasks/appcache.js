@@ -49,7 +49,7 @@ module.exports = function (grunt) {
         return matches;
     }
 
-    grunt.registerMultiTask('appcache', 'Automatically generates an HTML5 AppCache manifest from a list of files.', function () {
+    grunt.registerMultiTask('zabcache', 'Automatically generates an HTML5 AppCache manifest from a list of files.', function () {
         var output = path.normalize(this.data.dest);
         var options = this.options({
             basePath: process.cwd(),
