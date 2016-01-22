@@ -1,5 +1,6 @@
 /*
- * grunt-appcache
+ * grunt-zabcache
+ * based on grunt-appcache
  * http://canvace.com/
  *
  * Copyright (c) 2013 Canvace Srl
@@ -64,7 +65,8 @@ module.exports = function (grunt) {
             ignored.push(relative(options.basePath, output));
         }
 
-        var cachePatterns = array(this.data.cache || []);
+
+      var cachePatterns = array(this.data.cache || []);
         if (typeof this.data.cache === 'object') {
             this.data.cache.patterns = array(this.data.cache.patterns || []);
             this.data.cache.literals = array(this.data.cache.literals || []);
@@ -93,10 +95,10 @@ module.exports = function (grunt) {
             settings: options.preferOnline ? ['prefer-online'] : []
         };
 
-        if (grunt.file.exists(output)) {
-            var original = appcache.readManifest(output);
-            manifest.version.revision = (1 + original.version.revision);
-        }
+      if(options.headcomment){
+          grunt.log.writeln('Found headcomment' + options.headcomment);
+          manifest.version.headcomment = options.headcomment;
+      }
 
         if (!appcache.writeManifest(output, manifest)) {
             grunt.log.error('AppCache manifest creation failed.');

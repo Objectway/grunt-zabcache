@@ -1,6 +1,6 @@
 # grunt-appcache
 
-> Grunt task for generating an HTML5 AppCache manifest from the specified list of files.
+> Grunt task for generating an HTML5 AppCache manifest from the specified list of files. Forked from https://github.com/canvace/grunt-appcache with headcomment support. The headcomment allow to add freetext comment in the first line of the manifest
 
 ## Getting Started
 This plugin requires Grunt `~0.4.1`
@@ -42,6 +42,12 @@ Type: `String`
 Default value: `process.cwd()`
 
 The absolute or relative path to the directory to consider as the root of the application for which to generate the cache manifest.
+
+#### options.headcomment
+Type: `String`
+Default value: ``
+
+Custom string for the comment section
 
 #### options.baseUrl
 Type: `String`
@@ -104,13 +110,38 @@ grunt.initConfig({
 })
 ```
 
-The next example uses the extended syntax to the `cache` parameter:
+The next example uses the extended syntax to the `cache` parameter and add the version number taken from your package.json:
 
 ```js
 grunt.initConfig({
+pkg: grunt.file.readJSON('package.json'),
   appcache: {
     options: {
-      basePath: 'static'
+      basePath: 'static',
+      headcomment: '<%= pkg.name %> version: <%= pkg.version %>'
+    },
+    all: {
+      dest: 'static/manifest.appcache',
+      cache: {
+        patterns: [
+          'static/**/*',         // all the resources in 'static/'
+          '!static/ignored/**/*' // except the 'static/ignored/' subtree
+        ],
+        literals: '/'            // insert '/' as is in the "CACHE:" section
+      }
+    }
+  }
+})
+```
+The last example uses headcomment to add free text in the first commented line:
+
+```js
+grunt.initConfig({
+pkg: grunt.file.readJSON('package.json'),
+  appcache: {
+    options: {
+      basePath: 'static',
+      headcomment: "MyWebApp 1.0.0"
     },
     all: {
       dest: 'static/manifest.appcache',
