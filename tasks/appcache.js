@@ -1,12 +1,3 @@
-/*
- * grunt-zabcache
- * based on grunt-appcache
- * http://canvace.com/
- *
- * Copyright (c) 2013 Canvace Srl
- * Licensed under the MIT license.
- */
-
 'use strict';
 
 module.exports = function (grunt) {
@@ -49,21 +40,25 @@ module.exports = function (grunt) {
         return matches;
     }
 
-    grunt.registerMultiTask('zabcache', 'Automatically generates an HTML5 AppCache manifest from a list of files.', function () {
+    grunt.registerMultiTask('zabcache', 'Build HTML5 AppCache manifest from a list of files.', function () {
         var output = path.normalize(this.data.dest);
         var options = this.options({
             basePath: process.cwd(),
-            ignoreManifest: true,
-            preferOnline: false
+            preferOnline: false,
+            addpkgname: false,
+            addpkgversion: false,
+            adddate: true,
+            headcomment: ''
         });
 
         var ignored = [];
+
         if (this.data.ignored) {
             ignored = expand(this.data.ignored, options.basePath);
         }
-        if (options.ignoreManifest) {
-            ignored.push(relative(options.basePath, output));
-        }
+
+        //avoid common mistake: don't list manifest into manifest
+        ignored.push(relative(options.basePath, output));
 
 
       var cachePatterns = array(this.data.cache || []);
@@ -95,10 +90,12 @@ module.exports = function (grunt) {
             settings: options.preferOnline ? ['prefer-online'] : []
         };
 
-      if(options.headcomment){
-          grunt.log.writeln('Found headcomment' + options.headcomment);
-          manifest.version.headcomment = options.headcomment;
-      }
+        manifest.headcomment = options.headcomment;
+        grunt.log.writeln('DEBUG addpkgname: ' + options.addpkgname);
+        manifest.addpkgname = options.addpkgname;
+        manifest.addpkgversion = options.addpkgversion;
+        manifest.adddate = options.adddate;
+
 
         if (!appcache.writeManifest(output, manifest)) {
             grunt.log.error('AppCache manifest creation failed.');

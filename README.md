@@ -1,17 +1,18 @@
 # grunt-zabcache
 
-> Grunt task for generating an HTML5 AppCache manifest from the specified list of files. Forked from https://github.com/marcozabo/grunt-zabcache with headcomment support. The headcomment allow to add freetext comment in the first line of the manifest
+> The simplest way to build your own appcache.manifest file with Grunt. Forked from https://github.com/canvace/grunt-appcache with headcomment support and other changes. For further informations about HTML 5 appcache please refer to HTML 5 documentation.
 
-## Getting Started
+## Requirements
 This plugin requires Grunt `~0.4.1`
 
 If you haven't used [Grunt](http://gruntjs.com/) before, be sure to check out the [Getting Started](http://gruntjs.com/getting-started) guide, as it explains how to create a [Gruntfile](http://gruntjs.com/sample-gruntfile) as well as install and use Grunt plugins. Once you're familiar with that process, you may install this plugin with this command:
 
+###Installation
 ```shell
 npm install grunt-zabcache --save-dev
 ```
 
-Once the plugin has been installed, it may be enabled inside your Gruntfile with this line of JavaScript:
+Once installed, add the following line to your Gruntfile:
 
 ```js
 grunt.loadNpmTasks('grunt-zabcache');
@@ -19,8 +20,8 @@ grunt.loadNpmTasks('grunt-zabcache');
 
 ## The "zabcache" task
 
-### Overview
-In your project's Gruntfile, add a section named `zabcache` to the data object passed into `grunt.initConfig()`.
+### Your Gruntfile
+In your project's Gruntfile, add a section named `zabcache` into `grunt.initConfig()`.
 
 ```js
 grunt.initConfig({
@@ -37,7 +38,7 @@ grunt.initConfig({
 
 ### Options
 
-#### options.basePath
+#### basePath
 Type: `String`
 Default value: `process.cwd()`
 
@@ -47,19 +48,31 @@ The absolute or relative path to the directory to consider as the root of the ap
 Type: `String`
 Default value: ``
 
-Custom string for the comment section
+Free text to be used as comment in the first line of the appcache.manifest file
+
+#### options.adddate
+Type: `Boolean`
+Default value: true
+
+adds a timestamp in the first (commented) line of the appcache.manifest file
+
+#### options.addpkgname
+Type: `Boolean`
+Default value: false
+
+adds the name ofyour project in the first (commented) line of the appcache.manifest file
+
+#### options.addpkgversion
+Type: `Boolean`
+Default value: false
+
+adds the version ofyour project in the first (commented) line of the appcache.manifest file
 
 #### options.baseUrl
 Type: `String`
 Default value: `undefined`
 
 The base URL to prepand to all expanded cache entries.
-
-#### options.ignoreManifest
-Type: `Boolean`
-Default value: `true`
-
-Specifies if to ignore the cache manifest itself from the list of files to insert in the "CACHE:" section.
 
 #### options.preferOnline
 Type: `Boolean`
@@ -98,7 +111,7 @@ In this example, the module is set to generate an AppCache manifest from the con
 grunt.initConfig({
   zabcache: {
     options: {
-      basePath: 'static'
+      basePath: 'static',
     },
     all: {
       dest: 'static/manifest.appcache',
@@ -110,15 +123,16 @@ grunt.initConfig({
 })
 ```
 
-The next example uses the extended syntax to the `cache` parameter and add the version number taken from your package.json:
+The next example uses the extended syntax to the `cache` parameter and add a custom string in the comment line 
 
 ```js
 grunt.initConfig({
-pkg: grunt.file.readJSON('package.json'),
+
   zabcache: {
     options: {
       basePath: 'static',
-      headcomment: '<%= pkg.name %> version: <%= pkg.version %>'
+      headcomment: 'Free text here',
+      adddate: false
     },
     all: {
       dest: 'static/manifest.appcache',
@@ -133,7 +147,7 @@ pkg: grunt.file.readJSON('package.json'),
   }
 })
 ```
-The last example uses headcomment to add free text in the first commented line:
+The last example shows how to add the name and version of your project in the manifest file 
 
 ```js
 grunt.initConfig({
@@ -141,7 +155,9 @@ pkg: grunt.file.readJSON('package.json'),
   zabcache: {
     options: {
       basePath: 'static',
-      headcomment: "MyWebApp 1.0.0"
+      adddate: true,
+      addpkgname: true,
+      addpkgversion: true
     },
     all: {
       dest: 'static/manifest.appcache',

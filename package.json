@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/canvace/grunt-zabcache.git"
+    "url": "git+https://github.com/canvace/grunt-zabcache.git"
   },
   "bugs": {
     "url": "https://github.com/canvace/grunt-zabcache/issues"
@@ -31,6 +31,33 @@
     "grunt": "~0.4.1"
   },
   "keywords": [
-    "grunt", "gruntplugin", "html5", "manifest", "zabcache"
-  ]
+    "grunt",
+    "gruntplugin",
+    "html5",
+    "manifest",
+    "zabcache"
+  ],
+  "gitHead": "077f936cea7af5b8aff03461800d99ea0d6b7635",
+  "_id": "grunt-zabcache@0.1.10",
+  "_shasum": "4d5b15788bc2554c9f52f2553aa5e92d58578493",
+  "_from": "grunt-zabcache@*",
+  "_npmVersion": "2.14.1",
+  "_nodeVersion": "0.12.7",
+  "_npmUser": {
+    "name": "marcozabo",
+    "email": "marco.damelio@objectway.it"
+  },
+  "dist": {
+    "shasum": "4d5b15788bc2554c9f52f2553aa5e92d58578493",
+    "tarball": "http://registry.npmjs.org/grunt-zabcache/-/grunt-zabcache-0.1.10.tgz"
+  },
+  "maintainers": [
+    {
+      "name": "marcozabo",
+      "email": "marco.damelio@objectway.it"
+    }
+  ],
+  "directories": {},
+  "_resolved": "https://registry.npmjs.org/grunt-zabcache/-/grunt-zabcache-0.1.10.tgz",
+  "readme": "ERROR: No README data found!"
 }

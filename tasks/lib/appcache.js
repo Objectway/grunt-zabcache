@@ -1,12 +1,3 @@
-/*
- * grunt zabcache
- * based on: grunt-appcache
- * http://canvace.com/
- *
- * Copyright (c) 2013 Canvace Srl
- * Licensed under the MIT license.
- */
-
 'use strict';
 
 module.exports.init = function (grunt) {
@@ -91,16 +82,29 @@ module.exports.init = function (grunt) {
     exports.writeManifest = function (filepath, manifest) {
         var contents = ['CACHE MANIFEST'];
         var i;
+        var pkg = grunt.file.readJSON('package.json');
+        var commentline = '#';
+        var date = '';
 
-        if(!manifest.version.headcomment){
-          manifest.version.headcomment = '';
-        }
+        if(manifest.addpkgname == true){
+            commentline = commentline + ' ' + pkg.name;
+        }    
+     
+        if(manifest.addpkgversion == true){
+            commentline = commentline + ' ' + pkg.version;
+        }    
 
-        if (manifest.version.date.toISOString) {
-          contents.push('#'+ manifest.version.headcomment +' '+ manifest.version.date.toISOString());
-        } else {
-          contents.push('#'+ manifest.version.headcomment +' '+ manifest.version.date);
-        }
+        if(manifest.adddate == true){
+            if (manifest.version.date.toISOString) {
+                date = manifest.version.date.toISOString();
+            } else {
+                date = manifest.version.date;
+            }
+            commentline = commentline + ' ' + date;
+        }    
+
+
+        contents.push(commentline + ' ' + manifest.headcomment + ' ');
 
         if (0 !== manifest.cache.length) {
             contents.push('');

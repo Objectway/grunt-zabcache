@@ -1,11 +1,3 @@
-/*
- * grunt-appcache
- * http://canvace.com/
- *
- * Copyright (c) 2013 Canvace Srl
- * Licensed under the MIT license.
- */
-
 'use strict';
 
 module.exports = function (grunt) {
