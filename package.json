@@ -2,16 +2,16 @@
   "name": "grunt-zabcache",
   "description": "Grunt task for generating an HTML5 AppCache manifest.",
   "version": "0.1.11",
-  "homepage": "https://github.com/canvace/grunt-zabcache/",
+  "homepage": "https://github.com/Objectway/grunt-zabcache/",
   "author": {
     "name": "Marco DAmelio"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/canvace/grunt-zabcache.git"
+    "url": "git+https://github.com/Objectway/grunt-zabcache.git"
   },
   "bugs": {
-    "url": "https://github.com/canvace/grunt-zabcache/issues"
+    "url": "https://github.com/Objectway/grunt-zabcache/issues"
   },
   "license": "MIT",
   "main": "Gruntfile.js",
