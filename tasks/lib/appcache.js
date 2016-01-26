@@ -88,11 +88,11 @@ module.exports.init = function (grunt) {
 
         if(manifest.addpkgname == true){
             commentline = commentline + ' ' + pkg.name;
-        }    
-     
+        }
+
         if(manifest.addpkgversion == true){
             commentline = commentline + ' ' + pkg.version;
-        }    
+        }
 
         if(manifest.adddate == true){
             if (manifest.version.date.toISOString) {
@@ -101,7 +101,7 @@ module.exports.init = function (grunt) {
                 date = manifest.version.date;
             }
             commentline = commentline + ' ' + date;
-        }    
+        }
 
 
         contents.push(commentline + ' ' + manifest.headcomment + ' ');

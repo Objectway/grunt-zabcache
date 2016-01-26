@@ -70,6 +70,7 @@ module.exports = function (grunt) {
         var cache = expand(cachePatterns, options.basePath).filter(function (path) {
             return ignored.indexOf(path) === -1;
         });
+
         if (typeof options.baseUrl === 'string') {
             cache = cache.map(function (path) {
                 return joinUrl(options.baseUrl, path);
@@ -91,7 +92,6 @@ module.exports = function (grunt) {
         };
 
         manifest.headcomment = options.headcomment;
-        grunt.log.writeln('DEBUG addpkgname: ' + options.addpkgname);
         manifest.addpkgname = options.addpkgname;
         manifest.addpkgversion = options.addpkgversion;
         manifest.adddate = options.adddate;
