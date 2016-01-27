@@ -68,6 +68,12 @@ Default value: false
 
 adds the version ofyour project in the first (commented) line of the appcache.manifest file
 
+#### options.usebowerjson
+Type: `Boolean`
+Default value: false
+
+grab project name and version from bower.json (default: from package.json)
+
 #### options.baseUrl
 Type: `String`
 Default value: `undefined`

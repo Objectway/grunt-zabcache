@@ -1,7 +1,7 @@
 {
   "name": "grunt-zabcache",
   "description": "Grunt task for generating an HTML5 AppCache manifest.",
-  "version": "0.1.12",
+  "version": "0.1.13",
   "homepage": "https://github.com/Objectway/grunt-zabcache/",
   "author": {
     "name": "Marco DAmelio"

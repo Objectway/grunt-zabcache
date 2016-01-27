@@ -47,6 +47,7 @@ module.exports = function (grunt) {
             preferOnline: false,
             addpkgname: false,
             addpkgversion: false,
+            usebowerjson: false,
             adddate: true,
             headcomment: ''
         });
@@ -94,6 +95,7 @@ module.exports = function (grunt) {
         manifest.headcomment = options.headcomment;
         manifest.addpkgname = options.addpkgname;
         manifest.addpkgversion = options.addpkgversion;
+        manifest.usebowerjson = options.usebowerjson;
         manifest.adddate = options.adddate;
 
 

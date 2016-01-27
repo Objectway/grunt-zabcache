@@ -82,9 +82,15 @@ module.exports.init = function (grunt) {
     exports.writeManifest = function (filepath, manifest) {
         var contents = ['CACHE MANIFEST'];
         var i;
-        var pkg = grunt.file.readJSON('package.json');
+        var pkg;
         var commentline = '#';
         var date = '';
+
+        if(manifest.usebowerjson == true){
+         pkg = grunt.file.readJSON('bower.json');
+        }else{
+          pkg = grunt.file.readJSON('package.json');
+        }
 
         if(manifest.addpkgname == true){
             commentline = commentline + ' ' + pkg.name;
