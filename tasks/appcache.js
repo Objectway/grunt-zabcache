@@ -97,7 +97,7 @@ module.exports = function (grunt) {
         manifest.addpkgversion = options.addpkgversion;
         manifest.usebowerjson = options.usebowerjson;
         manifest.adddate = options.adddate;
-
+        manifest.indexfile = options.indexfile;
 
         if (!appcache.writeManifest(output, manifest)) {
             grunt.log.error('AppCache manifest creation failed.');

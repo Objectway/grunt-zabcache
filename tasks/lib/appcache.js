@@ -144,6 +144,21 @@ module.exports.init = function (grunt) {
             }
         }
 
+        if (manifest.indexfile){
+          var indexpath = manifest.indexfile;
+          var srcbuffer = grunt.file.read(indexpath);
+          var srcstring = srcbuffer.toString();
+          var updatedcontent;
+          if(srcstring.indexOf("<html")>=0){
+            updatedcontent = srcstring.replace("<html", "<html manifest=\"manifest.appcache\"");
+          }
+          if(srcstring.indexOf("<HTML")>=0){
+            updatedcontent = srcstring.replace("<HTML", "<HTML manifest=\"manifest.appcache\"");
+          }
+          grunt.file.write(indexpath, updatedcontent);
+        }
+
+
         return grunt.file.write(filepath, contents.join('\n'));
     };
 

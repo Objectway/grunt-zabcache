@@ -74,6 +74,13 @@ Default value: false
 
 grab project name and version from bower.json (default: from package.json)
 
+#### options.indexfile
+Type: `String`
+Default value: ``
+Optional: true
+
+path of your index.html main file. If set, a reference to the manifest will be created
+
 #### options.baseUrl
 Type: `String`
 Default value: `undefined`
