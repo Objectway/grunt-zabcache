@@ -144,20 +144,26 @@ module.exports.init = function (grunt) {
             }
         }
 
-        if (manifest.indexfile){
-          var indexpath = manifest.indexfile;
-          var srcbuffer = grunt.file.read(indexpath);
-          var srcstring = srcbuffer.toString();
-          var updatedcontent;
-          if(srcstring.indexOf("<html")>=0){
-            updatedcontent = srcstring.replace("<html", "<html manifest=\"manifest.appcache\"");
-          }
-          if(srcstring.indexOf("<HTML")>=0){
-            updatedcontent = srcstring.replace("<HTML", "<HTML manifest=\"manifest.appcache\"");
-          }
-          grunt.file.write(indexpath, updatedcontent);
-        }
+        if (manifest.indexfiles){
+          var indexpaths = manifest.indexfiles;
 
+          for(var i = 0; i < indexpaths.length; i++)
+          {
+            var srcbuffer = grunt.file.read(indexpaths[i]);
+            var srcstring = srcbuffer.toString();
+            var updatedcontent;
+            if(srcstring.indexOf("<html")>=0){
+              updatedcontent = srcstring.replace("<html", "<html manifest=\"manifest.appcache\"");
+            }
+            if(srcstring.indexOf("<HTML")>=0){
+              updatedcontent = srcstring.replace("<HTML", "<HTML manifest=\"manifest.appcache\"");
+            }
+            grunt.file.write(indexpaths[i], updatedcontent);
+
+          }
+
+
+        }
 
         return grunt.file.write(filepath, contents.join('\n'));
     };

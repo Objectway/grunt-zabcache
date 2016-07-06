@@ -41,7 +41,9 @@ module.exports = function (grunt) {
     }
 
     grunt.registerMultiTask('zabcache', 'Build HTML5 AppCache manifest from a list of files.', function () {
-        var output = path.normalize(this.data.dest);
+       var output = path.normalize(this.data.dest);
+
+
         var options = this.options({
             basePath: process.cwd(),
             preferOnline: false,
@@ -92,12 +94,12 @@ module.exports = function (grunt) {
             settings: options.preferOnline ? ['prefer-online'] : []
         };
 
-        manifest.headcomment = options.headcomment;
-        manifest.addpkgname = options.addpkgname;
-        manifest.addpkgversion = options.addpkgversion;
-        manifest.usebowerjson = options.usebowerjson;
-        manifest.adddate = options.adddate;
-        manifest.indexfile = options.indexfile;
+          manifest.headcomment = options.headcomment;
+          manifest.addpkgname = options.addpkgname;
+          manifest.addpkgversion = options.addpkgversion;
+          manifest.usebowerjson = options.usebowerjson;
+          manifest.adddate = options.adddate;
+          manifest.indexfiles = options.indexfiles;
 
         if (!appcache.writeManifest(output, manifest)) {
             grunt.log.error('AppCache manifest creation failed.');
